@@ -2,29 +2,32 @@
 
 <div>
 <label for="">Enter Length</label>
-<input type="text"/>
+<input #length (input)="onChangeLength(length.value)" />
 </div> 
 
 <div>
   <label for="">Use Letters</label>
-  <input type="checkbox" name="" id="">
+  <input (change)="onChangeUseLetters()" type="checkbox" name="" id="">
 </div>
 
 <div>
   <label for="">Use Numbers</label>
-  <input type="checkbox" name="" id="">
+  <input (change)="onChangeUseNumbers()" type="checkbox" name="" id="">
 </div>
 
 <div>
   <label for="">Use Symbols</label>
-  <input type="checkbox" name="" id="">
+  <input (change)="onChangeUseSymbols()" type="checkbox" name="" id="">
 </div>
 
 <div>
-  <button>Generate!</button>
+  <button 
+    [disabled]="!(length && (includeLetters || includeSymbols || includeNumbers))" 
+    (click)="onButtonClick()"
+  >Generate!</button>
 </div>
 
 <div>
   <label for="">Your Password</label>
-  <input type="" />
+  <input [value]="password" />
 </div>
